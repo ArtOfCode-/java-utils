@@ -17,6 +17,9 @@ This repository is not Central-hosted, so you need a `<repository>` tag in your 
         <version>0.1-RELEASE</version>
     </dependency>
     
+## License
+This project is licensed under the MIT license.
+    
 ## Documentation
 ### `uk.co.artofcode.java.util.QueryableList<T>`
 A List implementation, based on `ArrayList`, that allows lambda-expression based querying, filtering, and mapping. In addition to the methods detailed here, all the methods available from `ArrayList` are also available here.
