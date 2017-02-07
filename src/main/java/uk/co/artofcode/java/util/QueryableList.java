@@ -69,10 +69,10 @@ public class QueryableList<T> extends ArrayList<T> {
     }
     
     /**
-     * Transforms this list by application of a function to each list item. The returned array contains the
+     * Transforms this list by application of a function to each list item. The returned list contains the
      * return value of the given function for each list item.
      * @param expr the function to apply to each element of this list
-     * @return an array containing return values of the function for every list element
+     * @return a new list containing return values of the function for every list element
      */
     public QueryableList<?> map(Function<T, ?> expr) {
         QueryableList<Object> results = new QueryableList<>();
