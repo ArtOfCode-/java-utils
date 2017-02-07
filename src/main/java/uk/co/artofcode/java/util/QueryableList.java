@@ -3,6 +3,7 @@ package uk.co.artofcode.java.util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Predicate;
+import java.util.function.Function;
 
 /**
  * A List implementation, based on ArrayList, that can be queried using lambda expressions.
@@ -65,5 +66,19 @@ public class QueryableList<T> extends ArrayList<T> {
                 this.remove(item);
             }
         });
+    }
+    
+    /**
+     * Transforms this list by application of a function to each list item. The returned array contains the
+     * return value of the given function for each list item.
+     * @param expr the function to apply to each element of this list
+     * @return an array containing return values of the function for every list element
+     */
+    public QueryableList<?> map(Function<T, ?> expr) {
+        QueryableList<Object> results = new QueryableList<>();
+        this.forEach((T item) -> {
+            results.add(expr.apply(item));
+        });
+        return results;
     }
 }

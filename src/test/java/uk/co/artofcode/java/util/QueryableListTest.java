@@ -71,4 +71,35 @@ public class QueryableListTest {
         assertFalse(youngsters.contains(dom));
     }
     
+    @Test
+    public void testMapOnStrings() {
+        QueryableList<String> testList = new QueryableList<>(Arrays.asList("ABC", "DEF", "GHI", "JKL"));
+        QueryableList<Character> firstChars = (QueryableList<Character>) testList.map((String s) -> s.charAt(0));
+        
+        assertEquals(4, firstChars.size());
+        
+        assertTrue(firstChars.get(0).equals('A'));
+        assertTrue(firstChars.get(1).equals('D'));
+        assertTrue(firstChars.get(2).equals('G'));
+        assertTrue(firstChars.get(3).equals('J'));
+    }
+    
+    @Test
+    public void testMapOnPeople() {
+        Person anna = new Person("Anna", 18);
+        Person bob = new Person("Bob", 23);
+        Person charlie = new Person("Charlie", 28);
+        Person dom = new Person("Dom", 33);
+        
+        QueryableList<Person> testList = new QueryableList<>(Arrays.asList(anna, bob, charlie, dom));
+        QueryableList<Integer> results = (QueryableList<Integer>) testList.map((Person p) -> p.getAge());
+        
+        assertEquals(4, results.size());
+        
+        assertEquals(18L, (long)results.get(0));
+        assertEquals(23L, (long)results.get(1));
+        assertEquals(28L, (long)results.get(2));
+        assertEquals(33L, (long)results.get(3));
+    }
+    
 }
