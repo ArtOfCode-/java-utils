@@ -1,4 +1,4 @@
-# `uk.co.artofcode.java.util.QueryableList<T>`
+## `uk.co.artofcode.java.util.QueryableList<T>`
 A List implementation, based on `ArrayList`, that allows lambda-expression based querying, filtering, and mapping. In addition to the methods detailed here, all the methods available from `ArrayList` are also available here.
 
 #### `public QueryableList<>()`
