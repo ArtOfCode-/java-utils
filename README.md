@@ -45,8 +45,8 @@ A List implementation, based on `ArrayList`, that allows lambda-expression based
    
    For example:
    
-       QueryableList<String> testList = new QueryableList<>(Arrays.asList("1", "1 2", "1 2 3", "1 2 3 4"));
-       QueryableList<String> results = testList.query((String s) -> s.split(" ").length > 2);
+         QueryableList<String> testList = new QueryableList<>(Arrays.asList("1", "1 2", "1 2 3", "1 2 3 4"));
+         QueryableList<String> results = testList.query((String s) -> s.split(" ").length > 2);
        
    **Throws:** `NullPointerException` if the given predicate is null.
    
@@ -57,8 +57,8 @@ A List implementation, based on `ArrayList`, that allows lambda-expression based
    
    For example:
    
-       QueryableList<String> testList = new QueryableList<>(Arrays.asList("1", "1 2", "1 2 3", "1 2 3 4"));
-       testList.filter((String s) -> s.split(" ").length > 2);
+         QueryableList<String> testList = new QueryableList<>(Arrays.asList("1", "1 2", "1 2 3", "1 2 3 4"));
+         testList.filter((String s) -> s.split(" ").length > 2);
        
    In this example, the two elements with fewer than two "words" in them are removed from the list. The list now has two
    elements in it.
@@ -72,8 +72,8 @@ A List implementation, based on `ArrayList`, that allows lambda-expression based
    
    For example:
    
-       QueryableList<String> testList = new QueryableList<>(Arrays.asList("ABC", "DEF", "GHI", "JKL"));
-       QueryableList<Character> firstChars = (QueryableList<Character>) testList.map((String s) -> s.charAt(0));
+         QueryableList<String> testList = new QueryableList<>(Arrays.asList("ABC", "DEF", "GHI", "JKL"));
+         QueryableList<Character> firstChars = (QueryableList<Character>) testList.map((String s) -> s.charAt(0));
        
    To avoid errors caused by the generic type argument, you should cast the result of `map` to a `QueryableList<T>`,
    where T is the return type of the specified function.
