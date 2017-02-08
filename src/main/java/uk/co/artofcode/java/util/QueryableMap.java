@@ -1,9 +1,11 @@
 package uk.co.artofcode.java.util;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Collection;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.function.BiPredicate;
+import java.util.Iterator;
 
 /**
  * A Map implementation, based on HashMap, that adds querying and filtering operations.
@@ -55,9 +57,9 @@ public class QueryableMap<K, V> extends HashMap {
      */
     public QueryableMap<K, V> query(BiPredicate<K, V> expr) {
         QueryableMap<K, V> results = new QueryableMap();
-        this.entrySet().forEach((SimpleEntry e) -> {
-            K key = (K)e.getKey();
-            V value = (V)e.getValue();
+        this.forEach((Object k, Object v) -> {
+            K key = (K)k;
+            V value = (V)v;
             if (expr.test(key, value)) {
                 results.put(key, value);
             }
@@ -72,11 +74,12 @@ public class QueryableMap<K, V> extends HashMap {
      * @param expr the BiPredicate with which to test elements
      */
     public void filter(BiPredicate<K, V> expr) {
-        this.entrySet().forEach((SimpleEntry e) -> {
-           K key = (K)e.getKey();
-           if (!expr.test(key, (V)e.getValue())) {
-               this.remove(key);
-           }
-        });
+        Iterator<Entry<K, V>> iterator = this.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Entry<K, V> entry = iterator.next();
+            if (!expr.test(entry.getKey(), entry.getValue())) {
+                iterator.remove();
+            }
+        }
     }
 }
